@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import { API_OPTIONS } from "../utility/constants";
 import { useDispatch, useSelector } from "react-redux";
-import { addMovieTrailer } from "../utility/moviesSlice";
 import useMoviesTrailer from "../hooks/useMoviesTrailer";
 
 export const VideoBackground = ({ movieId }) => {
@@ -9,20 +7,18 @@ export const VideoBackground = ({ movieId }) => {
 
   useMoviesTrailer(movieId);
 
-  console.log(trailerVideo?.key);
-
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <iframe
-        className="w-screen height-screen  pointer-events-none aspect-video "
+        className="w-full aspect-video pointer-events-none "
         src={
           "http://www.youtube.com/embed/" +
           trailerVideo?.key +
           "?autoplay=1&mute=1&loop=1&playlist=" +
           trailerVideo?.key
         }
-        frameborder="0"
-        allowfullscreen
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       ></iframe>
     </div>
   );

@@ -42,19 +42,30 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGptSearch = () => {
+    // toggle gpt
+  };
+
   return (
-    <div className="absolute flex justify-between w-full bg-gradient-to-b from-black ">
-      <img className="h-10 m-4 mix-blend " src={LOGO} alt="logo" />
+    <div className="absolute flex justify-between w-full bg-gradient-to-b from-black z-10 ">
+      <img className="h-10 m-4 " src={LOGO} alt="logo" />
 
       {userItems && (
-        <div className="flex justify-between">
+        <div className="flex ">
+          <button
+            className="h-10 bg-violet-500 my-4 mx-2 p-2 text-white font-bold rounded-md"
+            onClick={handleGptSearch}
+          >
+            GPT Search
+          </button>
+
           <img
             src={userItems?.photoURL}
             alt="user photo"
-            className="w-10 h-10 m-4"
+            className="w-10 h-10 mx-2 my-4"
           />
           <button
-            className="h-10 bg-red-500 m-4 p-2 text-white font-bold rounded-sm "
+            className="h-10 bg-red-500 mx-2 my-4 p-2 text-white font-bold rounded-md "
             onClick={handleSignout}
           >
             Sign out
