@@ -10,11 +10,18 @@ export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhNDk0NGViMjdmNmEzYTIxNzY0NmY3YmI2ZTNlZGMwYSIsIm5iZiI6MTcyMDA4MzU0MC40NDU2NzIsInN1YiI6IjY2ODY2MzM0M2UyZjZlYTAwOWMxYTVjOCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.w_Pgka0cth8hZHrTXawSe_fvHOZb-XiyDgCO_D_nW7I",
+    Authorization: "Bearer " + process.env.REACT_APP_TMDD_KEY,
   },
 };
 
 export const POSTER_URL = "https://image.tmdb.org/t/p/w500/";
 
 export const URL = "https://api.themoviedb.org/3/movie/now_playing?page=1";
+
+export const SUPPORTED_LANGUAGE = [
+  { identifier: "en", name: "English" },
+  { identifier: "hi", name: "Hindi" },
+  { identifier: "spanish", name: "Spanish" },
+];
+
+export const OPENAI_API = process.env.REACT_APP_OPENAI_KEY;

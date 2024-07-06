@@ -2,6 +2,7 @@ import React from "react";
 import { POSTER_URL } from "../utility/constants";
 
 const MovieCard = ({ posterPath }) => {
+  if (!posterPath) return null;
   return (
     <div className="inline-block pr-4">
       <img
