@@ -1,4 +1,3 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -14,36 +13,36 @@ const Header = () => {
   const userItems = useSelector((store) => store.user);
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
-  const handleSignout = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        navigate("/error");
-      });
-  };
+  // const handleSignout = () => {
+  //   signOut(auth)
+  //     .then(() => {})
+  //     .catch((error) => {
+  //       navigate("/error");
+  //     });
+  // };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email, displayName, photoURL } = user;
-        dispatch(
-          addUser({
-            uid: uid,
-            email: email,
-            displayName: displayName,
-            photoURL: photoURL,
-          })
-        );
-        navigate("/browse");
-      } else {
-        dispatch(removeUser());
-        navigate("/");
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       const { uid, email, displayName, photoURL } = user;
+  //       dispatch(
+  //         addUser({
+  //           uid: uid,
+  //           email: email,
+  //           displayName: displayName,
+  //           photoURL: photoURL,
+  //         })
+  //       );
+  //       navigate("/browse");
+  //     } else {
+  //       dispatch(removeUser());
+  //       navigate("/");
+  //     }
+  //   });
 
-    // this is unsubscribe when unmount
-    return () => unsubscribe();
-  }, []);
+  //   // this is unsubscribe when unmount
+  //   return () => unsubscribe();
+  // }, []);
 
   const handleGptSearch = () => {
     // toggle gpt
@@ -83,10 +82,7 @@ const Header = () => {
             alt="user photo"
             className="w-10 h-10 mx-2 my-4"
           />
-          <button
-            className="h-10 bg-red-500 mx-2 my-4 p-2 text-white font-bold rounded-md "
-            onClick={handleSignout}
-          >
+          <button className="h-10 bg-red-500 mx-2 my-4 p-2 text-white font-bold rounded-md ">
             Sign out
           </button>
         </div>
